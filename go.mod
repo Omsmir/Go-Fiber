@@ -1,6 +1,6 @@
 module github.com/Omsmir/Go-Fiber
 
-go 1.24.1
+go 1.23
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
