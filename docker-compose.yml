@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: omar
+      MONGO_INITDB_ROOT_PASSWORD: omarsamir1
+      MONGO_INITDB_DATABASE: fiber
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  fiber-app:
+    build: .
+    container_name: fiber-app
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: "mongodb://omar:omarsamir1@mongodb:27017/fiber?authSource=admin"
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+
+volumes:
+  mongodb_data:
+    driver: local
