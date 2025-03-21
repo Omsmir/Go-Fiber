@@ -27,5 +27,6 @@ RUN chmod +x main
 # Expose the port Fiber is running on
 EXPOSE 8080
 
+
 # Run the binary
 CMD ["./main"]
